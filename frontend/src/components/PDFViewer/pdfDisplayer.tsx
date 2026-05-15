@@ -22,11 +22,11 @@ const PDFDisplayer = ({
 }: PDFDisplayerProps) => {
 
   return (
-    <div className="flex h-screen w-[480px] items-center justify-center overflow-auto rounded-xl border border-neutral-300 bg-neutral-50 p-4">
+    <div className="flex w-[440px] h-[560px] items-center justify-center overflow-auto rounded-xl border border-neutral-300 bg-neutral-50 p-4">
 
       {file ? (
         <Document file={file}>
-          <Page pageNumber={1} />
+          <Page pageNumber={1} scale={0.7}/>
         </Document>
       ) : (
         <div className="text-neutral-500 text-center">
