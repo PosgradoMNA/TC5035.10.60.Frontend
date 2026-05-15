@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from "react";
 import { FiFileText } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useDropzone } from "react-dropzone";
+import React from "react";
 
 type UploadButtonProps = {
   onFileUpload: (file: File) => void;
