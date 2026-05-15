@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-
 import { PDFViewer } from '@embedpdf/react-pdf-viewer';
+import TextType from '../../reactbits/components/TextType';
+import React from 'react';
 
 type PDFDisplayerProps = {
   file: File | null;
@@ -33,7 +34,15 @@ const PDFDisplayer = ({
         />
       ) : (
         <p className="text-neutral-500">
-          Please upload your CV
+            <TextType 
+            text={["Welcome to CVSync", "Click the button and upload your CV!"]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor
+            cursorCharacter="_"
+            deletingSpeed={50}
+            cursorBlinkDuration={0.5}
+            />
         </p>
       )}
 
