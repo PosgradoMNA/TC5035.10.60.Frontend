@@ -1,19 +1,22 @@
 import { Field } from "../../reactbits/components/ui/field"
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
 } from "../../reactbits/components/ui/input-group"
-
 import React, { useState } from "react"
+
 
 export function JobDescriptionDump() {
   const [text, setText] = useState("")
 
   const handleClear = () => {
     setText("")
+  }
+
+  const handleSubmit = () => {
+    console.log(text)
   }
 
   return (
@@ -24,7 +27,10 @@ export function JobDescriptionDump() {
           placeholder="Share the job description..."
           className="min-h-24"
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => {
+            setText(e.target.value)
+          }}
+        
         />
 
         <InputGroupAddon align="block-end">
@@ -41,6 +47,7 @@ export function JobDescriptionDump() {
             variant="default"
             size="sm"
             className="ml-auto"
+            onClick={handleSubmit}
           >
             Analyze job description
           </InputGroupButton>
