@@ -3,24 +3,35 @@ import {
   ToggleGroupItem,
 } from "../../reactbits/components/ui/toggle-group"
 
-import { LinkIcon, BrainIcon } from 'lucide-react';
+import { LinkIcon, PencilLine } from "lucide-react"
 import React from "react"
 
-export function ToggleModeButton() {
+type Props = {
+  mode: string[]
+  setMode: React.Dispatch<React.SetStateAction<string[]>>
+}
+
+export function ToggleModeButton({ mode, setMode }: Props) {
   return (
     <div className="flex items-center justify-center">
-      <ToggleGroup defaultValue={["asc"]} variant="outline" size="sm">
+      <ToggleGroup
+        value={mode}
+        onValueChange={(value) => setMode(value)}
+        variant="outline"
+        size="sm"
+      >
         <ToggleGroupItem value="asc" aria-label="Sort ascending">
           <LinkIcon />
           Job link
         </ToggleGroupItem>
+
         <ToggleGroupItem value="desc" aria-label="Sort descending">
-          <BrainIcon />
-          AI Recommendations
+          <PencilLine />
+          Job Description
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
   )
 }
 
-export default ToggleModeButton;
+export default ToggleModeButton
