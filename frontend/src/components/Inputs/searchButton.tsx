@@ -6,8 +6,7 @@ import {
 } from "../../reactbits/components/ui/input-group"
 import { SearchIcon } from 'lucide-react'
 import React, {useState} from "react"
-import fileToBase64 from "../../services/pdfToLambda"
-import sendToLambda from "../../services/sendPayloadToLambda"
+import {sendToLambda} from "../../services/sendPayloadToLambda"
 
 
 type PDFDisplayerProps = {
@@ -18,9 +17,21 @@ export function SearchButton({
   file,
 }: PDFDisplayerProps) {
   const [text, setText] = useState("")
-  const handleSubmit = () => {
-    console.log(text)
-  }
+  const handleSubmit = async () => {
+    if (!file) return;
+
+    try {
+      const response = await sendToLambda(
+        file,
+        text,
+        true
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <Field className="max-w-xs">

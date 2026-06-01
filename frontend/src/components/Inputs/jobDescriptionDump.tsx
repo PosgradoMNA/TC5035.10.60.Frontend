@@ -6,6 +6,8 @@ import {
   InputGroupTextarea,
 } from "../../reactbits/components/ui/input-group"
 import React, { useState } from "react"
+import {sendToLambda} from "../../services/sendPayloadToLambda"
+
 
 type PDFDisplayerProps = {
   file: File | null;
@@ -20,9 +22,21 @@ export function JobDescriptionDump({
     setText("")
   }
 
-  const handleSubmit = () => {
-    console.log(text)
-  }
+  const handleSubmit = async () => {
+    if (!file) return;
+
+    try {
+      const response = await sendToLambda(
+        file,
+        text,
+        false
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <Field className="max-w-xs">

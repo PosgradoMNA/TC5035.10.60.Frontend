@@ -1,4 +1,7 @@
-async function sendToLambda(file: File, text: string, isLink: boolean) {
+import {fileToBase64} from "../services/pdfToLambda"
+
+
+export async function sendToLambda(file: File, text: string, isLink: boolean) {
   const pdfBase64 = await fileToBase64(file);
 
     let payload;
