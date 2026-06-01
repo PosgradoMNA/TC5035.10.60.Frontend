@@ -7,8 +7,13 @@ import {
 } from "../../reactbits/components/ui/input-group"
 import React, { useState } from "react"
 
+type PDFDisplayerProps = {
+  file: File | null;
+};
 
-export function JobDescriptionDump() {
+export function JobDescriptionDump({
+  file,
+}: PDFDisplayerProps) {
   const [text, setText] = useState("")
 
   const handleClear = () => {

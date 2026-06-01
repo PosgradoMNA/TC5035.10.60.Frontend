@@ -40,8 +40,8 @@ function App() {
           
           <div className="flex w-[440px] h-[560px] items-center justify-center overflow-auto rounded-xl border border-neutral-300 bg-neutral-50 p-4">
           {/*Conditional Render */}
-          {mode.includes("asc") && <SearchButton />}
-          {mode.includes("desc") && <JobDescriptionDump />}
+          {mode.includes("asc") && <SearchButton file={pdfFile} />}
+          {mode.includes("desc") && <JobDescriptionDump file={pdfFile} />}
           </div>
         </div>
       

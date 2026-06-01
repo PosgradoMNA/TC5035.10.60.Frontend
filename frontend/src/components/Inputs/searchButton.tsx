@@ -6,9 +6,17 @@ import {
 } from "../../reactbits/components/ui/input-group"
 import { SearchIcon } from 'lucide-react'
 import React, {useState} from "react"
+import fileToBase64 from "../../services/pdfToLambda"
+import sendToLambda from "../../services/sendPayloadToLambda"
 
 
-export function SearchButton() {
+type PDFDisplayerProps = {
+  file: File | null;
+};
+
+export function SearchButton({
+  file,
+}: PDFDisplayerProps) {
   const [text, setText] = useState("")
   const handleSubmit = () => {
     console.log(text)
