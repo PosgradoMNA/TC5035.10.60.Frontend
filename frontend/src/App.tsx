@@ -6,6 +6,7 @@ import React from 'react';
 import ToggleModeButton from './components/Buttons/toggleModeButton';
 import { SearchButton } from './components/Inputs/searchButton'
 import { JobDescriptionDump } from './components/Inputs/jobDescriptionDump'
+import { AIRecommendations } from './components/Inputs/keywordSearch';
 
 function App() {
   const [pdfFile, setPdfFile] =
@@ -40,8 +41,9 @@ function App() {
           
           <div className="flex w-[440px] h-[560px] items-center justify-center overflow-auto rounded-xl border border-neutral-300 bg-neutral-50 p-4">
           {/*Conditional Render */}
-          {mode.includes("asc") && <SearchButton file={pdfFile} />}
-          {mode.includes("desc") && <JobDescriptionDump file={pdfFile} />}
+          {mode.includes("link") && <SearchButton file={pdfFile} />}
+          {mode.includes("description") && <JobDescriptionDump file={pdfFile} />}
+          {mode.includes("recommendations") && (<AIRecommendations file={pdfFile} />)}
           </div>
         </div>
       

@@ -6,25 +6,24 @@ import {
 } from "../../reactbits/components/ui/input-group"
 import { SearchIcon } from 'lucide-react'
 import React, {useState} from "react"
-import {sendToLambda} from "../../services/sendPayloadToLambda"
+import {keywordsToLambda} from "../../services/sendKeywordsToLambda"
 
 
 type PDFDisplayerProps = {
   file: File | null;
 }; 
 
-export function SearchButton({
+export function AIRecommendations({
   file,
 }: PDFDisplayerProps) {
-  const [text, setText] = useState("")
+  const [keywords, setKeywords] = useState("")
   const handleSubmit = async () => {
     if (!file) return;
 
     try {
-      const response = await sendToLambda(
+      const response = await keywordsToLambda(
         file,
-        text,
-        true
+        keywords
       );
 
       console.log(response);
@@ -40,8 +39,8 @@ export function SearchButton({
           <SearchIcon />
         </InputGroupAddon>
         <InputGroupInput
-          placeholder="Enter job link..."
-          onChange={(e) => setText(e.target.value)}
+          placeholder="Search the job you want..."
+          onChange={(e) => setKeywords(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSubmit()

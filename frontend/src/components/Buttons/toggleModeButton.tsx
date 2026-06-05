@@ -3,7 +3,7 @@ import {
   ToggleGroupItem,
 } from "../../reactbits/components/ui/toggle-group"
 
-import { LinkIcon, PencilLine } from "lucide-react"
+import { LinkIcon, PencilLine, BrainIcon } from "lucide-react"
 import React from "react"
 
 type Props = {
@@ -20,15 +20,21 @@ export function ToggleModeButton({ mode, setMode }: Props) {
         variant="outline"
         size="sm"
       >
-        <ToggleGroupItem value="asc" aria-label="Sort ascending">
+        <ToggleGroupItem value="link" aria-label="Sort ascending">
           <LinkIcon />
           Job link
         </ToggleGroupItem>
 
-        <ToggleGroupItem value="desc" aria-label="Sort descending">
+        <ToggleGroupItem value="description" aria-label="Sort descending">
           <PencilLine />
           Job Description
         </ToggleGroupItem>
+
+        <ToggleGroupItem value="recommendations" aria-label="Sort ascending">
+          <BrainIcon />
+          AI recommendations
+        </ToggleGroupItem>
+
       </ToggleGroup>
     </div>
   )

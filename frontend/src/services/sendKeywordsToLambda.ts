@@ -1,25 +1,18 @@
 import {fileToBase64} from "../services/pdfToLambda"
 
 
-export async function sendToLambda(file: File, text: string, isLink: boolean) {
+export async function keywordsToLambda(file: File, keywords: string) {
   const pdfBase64 = await fileToBase64(file);
 
     let payload;
     
-    if (isLink){
-        payload = {
-            cv_dump: pdfBase64,
-            url: text
-        };
-    } else {
-        payload = {
-            cv_dump: pdfBase64,
-            job_dump: text
-        };
-    } 
+    payload = {
+        cv_dump: pdfBase64,
+        keywords: keywords
+    }; 
 
   const response = await fetch(
-    "https://3asvjlvesk.execute-api.us-west-2.amazonaws.com/development/optimize-cv",
+    "https://3asvjlvesk.execute-api.us-west-2.amazonaws.com/development/JobListerWithScore",
     {
       method: "POST",
       headers: {
