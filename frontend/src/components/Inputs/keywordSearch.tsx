@@ -7,7 +7,8 @@ import {
 import { SearchIcon } from 'lucide-react'
 import React, {useState} from "react"
 import {keywordsToLambda} from "../../services/sendKeywordsToLambda"
-
+import JobsAccordion from "../Buttons/accordionButton"
+import type { Job } from "../../types/Job";
 
 type PDFDisplayerProps = {
   file: File | null;
@@ -17,6 +18,7 @@ export function AIRecommendations({
   file,
 }: PDFDisplayerProps) {
   const [keywords, setKeywords] = useState("")
+  const [jobs, setJobs] = useState<Job[]>([])
   const handleSubmit = async () => {
     if (!file) return;
 
@@ -27,6 +29,9 @@ export function AIRecommendations({
       );
 
       console.log(response);
+
+      setJobs(response.job_list.response.results || []);
+
     } catch (error) {
       console.error(error);
     }
@@ -37,6 +42,7 @@ export function AIRecommendations({
       <InputGroup>
         <InputGroupAddon>
           <SearchIcon />
+        
         </InputGroupAddon>
         <InputGroupInput
           placeholder="Search the job you want..."
@@ -47,6 +53,11 @@ export function AIRecommendations({
             }
           }}/>
       </InputGroup>
+
+      <JobsAccordion
+        jobs={jobs}
+        />
+
     </Field>
   )
 }
