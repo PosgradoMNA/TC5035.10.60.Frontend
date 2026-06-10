@@ -1,5 +1,7 @@
 import {fileToBase64} from "../services/pdfToLambda"
 
+const API_URL = import.meta.env.VITE_AWS_LAMBDA_CV_OPTIMIZER_ENDPOINT;
+const API_KEY = import.meta.env.VITE_AWS_LAMBDA_API_KEY;
 
 export async function sendToLambda(file: File, text: string, isLink: boolean) {
   const pdfBase64 = await fileToBase64(file);
@@ -19,12 +21,12 @@ export async function sendToLambda(file: File, text: string, isLink: boolean) {
     } 
 
   const response = await fetch(
-    "https://3asvjlvesk.execute-api.us-west-2.amazonaws.com/development/optimize-cv",
+    API_URL,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "M5QcHPXx5bir1NXW6gqw2irtkc3Yftr2fqb4Ptl3"
+        "x-api-key": API_KEY
       },
       body: JSON.stringify(payload)
     }
