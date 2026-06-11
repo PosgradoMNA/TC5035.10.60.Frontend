@@ -7,6 +7,8 @@ import ToggleModeButton from './components/Buttons/toggleModeButton';
 import { SearchButton } from './components/Inputs/searchButton'
 import { JobDescriptionDump } from './components/Inputs/jobDescriptionDump'
 import { AIRecommendations } from './components/Inputs/keywordSearch';
+import CircularText from '../src/reactbits/components/CircularText';
+
 
 function App() {
   const [pdfFile, setPdfFile] =
@@ -19,6 +21,11 @@ function App() {
   };
 
   const [mode, setMode] = useState<string[]>(["asc"])
+
+  const hasSelection =
+    mode.includes("link") ||
+    mode.includes("description") ||
+    mode.includes("recommendations");
 
   return (
     <div className="app">
@@ -40,6 +47,14 @@ function App() {
           <ToggleModeButton mode={mode} setMode={setMode} />
           
           <div className="flex w-[440px] h-[560px] items-center justify-center overflow-auto rounded-xl border border-neutral-300 bg-neutral-50 p-4">
+          {!hasSelection && (
+            <CircularText
+              text="SELECT*A*OPTION*"
+              onHover="speedUp"
+              spinDuration={20}
+              className="custom-class"
+            />
+          )}
           {/*Conditional Render */}
           {mode.includes("link") && <SearchButton file={pdfFile} />}
           {mode.includes("description") && <JobDescriptionDump file={pdfFile} />}
