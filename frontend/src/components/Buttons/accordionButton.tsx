@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Accordion } from "@base-ui/react/accordion";
 import type { Job } from "../../types/Job";
-
+import { DynamicRecommendationButton } from "./dynamicRecommendationButton";
 
 type Props = {
   jobs: Job[];
@@ -45,7 +45,10 @@ export default function JobsAccordion({ jobs }: Props) {
                   __html: job.jobDescription,
                 }}
               />
+              {/* automatically generated button*/}
+              <DynamicRecommendationButton />
             </div>
+
           </Accordion.Panel>
         </Accordion.Item>
       ))}
