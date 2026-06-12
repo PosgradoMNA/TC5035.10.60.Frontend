@@ -2,12 +2,15 @@ import * as React from "react";
 import { Accordion } from "@base-ui/react/accordion";
 import type { Job } from "../../types/Job";
 import { DynamicRecommendationButton } from "./dynamicRecommendationButton";
+import { keywordsToLambda } from "../../services/sendKeywordsToLambda";
 
 type Props = {
-  jobs: Job[];
+  jobs: Job[],
+  file: File | null
 };
 
-export default function JobsAccordion({ jobs }: Props) {
+export default function JobsAccordion({ jobs, file }: Props) {
+
   return (
     <Accordion.Root>
       {jobs.map((job) => (
@@ -46,7 +49,10 @@ export default function JobsAccordion({ jobs }: Props) {
                 }}
               />
               {/* automatically generated button*/}
-              <DynamicRecommendationButton />
+              <DynamicRecommendationButton 
+                file={file}
+                jobDescription={job.jobDescription}
+              />
             </div>
 
           </Accordion.Panel>

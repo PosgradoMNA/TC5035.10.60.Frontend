@@ -60,7 +60,7 @@ export function AIRecommendations({
 
       {/* Resultados con scroll */}
       <div className="flex-1 overflow-y-auto border rounded-md p-2">
-        <JobsAccordion jobs={jobs} />
+        <JobsAccordion jobs={jobs} file={file}/>
       </div>
 
     </div>
