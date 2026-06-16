@@ -8,6 +8,7 @@ import { SearchButton } from './components/Inputs/searchButton'
 import { JobDescriptionDump } from './components/Inputs/jobDescriptionDump'
 import { AIRecommendations } from './components/Inputs/keywordSearch';
 import CircularText from '../src/reactbits/components/CircularText';
+import { MarkdownDrawer } from './components/Layout/drawerDisplay';
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
     mode.includes("link") ||
     mode.includes("description") ||
     mode.includes("recommendations");
+
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [markdown, setMarkdown] = useState("")
 
   return (
     <div className="app">
@@ -57,12 +61,29 @@ function App() {
           )}
           {/*Conditional Render */}
           {mode.includes("link") && <SearchButton file={pdfFile} />}
-          {mode.includes("description") && <JobDescriptionDump file={pdfFile} />}
+
+          {mode.includes("description") && (
+            <JobDescriptionDump
+              file={pdfFile}
+              openDrawer={(markdown: string) => {
+                setMarkdown(markdown);
+                setDrawerOpen(true);
+              }}
+            />
+          )}
+
           {mode.includes("recommendations") && (<AIRecommendations file={pdfFile} />)}
           </div>
         </div>
       
       </div>
+
+          <MarkdownDrawer
+          open={drawerOpen}
+          onOpenChange={setDrawerOpen}
+          markdown={markdown}
+        />
+
     </div>
   );
 }

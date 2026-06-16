@@ -10,11 +10,13 @@ import {sendToLambda} from "../../services/sendPayloadToLambda"
 
 
 type PDFDisplayerProps = {
-  file: File | null;
+  file: File | null,
+  openDrawer: (markdown: string) => void;
 };
 
 export function JobDescriptionDump({
   file,
+  openDrawer
 }: PDFDisplayerProps) {
   const [text, setText] = useState("")
 
@@ -33,6 +35,9 @@ export function JobDescriptionDump({
       );
 
       console.log(response);
+      
+      openDrawer(response.markdown);
+    
     } catch (error) {
       console.error(error);
     }
