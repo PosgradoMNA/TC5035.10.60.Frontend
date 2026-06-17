@@ -36,7 +36,7 @@ export function JobDescriptionDump({
 
       console.log(response);
       
-      openDrawer(response.markdown);
+      openDrawer(response.response);
     
     } catch (error) {
       console.error(error);

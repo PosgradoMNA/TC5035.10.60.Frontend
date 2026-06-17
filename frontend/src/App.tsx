@@ -30,6 +30,10 @@ function App() {
 
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [markdown, setMarkdown] = useState("")
+  const openDrawer = (markdownContent: string) => {
+    setMarkdown(markdownContent);
+    setDrawerOpen(true);
+  };
 
   return (
     <div className="app">
@@ -65,10 +69,7 @@ function App() {
           {mode.includes("description") && (
             <JobDescriptionDump
               file={pdfFile}
-              openDrawer={(markdown: string) => {
-                setMarkdown(markdown);
-                setDrawerOpen(true);
-              }}
+              openDrawer={openDrawer}
             />
           )}
 
