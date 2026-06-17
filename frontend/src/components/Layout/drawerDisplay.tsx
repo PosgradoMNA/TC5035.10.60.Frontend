@@ -11,6 +11,7 @@ import {
 } from "../../reactbits/components/ui/drawer"
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { downloadMarkdownPdf } from "../../services/downloadPdf"
 
 type MarkdownDrawerProps = {
   open: boolean
@@ -42,7 +43,7 @@ export function MarkdownDrawer({
         </div>
 
         <DrawerFooter>
-          <Button>Download</Button>
+          <Button onClick={() => downloadMarkdownPdf(markdown)}>Download</Button>
 
           <DrawerClose asChild>
             <Button variant="outline">
