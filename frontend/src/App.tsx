@@ -64,7 +64,8 @@ function App() {
             />
           )}
           {/*Conditional Render */}
-          {mode.includes("link") && <SearchButton file={pdfFile} />}
+          {mode.includes("link") && <SearchButton file={pdfFile}
+              openDrawer={openDrawer} />}
 
           {mode.includes("description") && (
             <JobDescriptionDump

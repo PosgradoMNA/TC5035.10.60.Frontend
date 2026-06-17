@@ -10,11 +10,13 @@ import {sendToLambda} from "../../services/sendPayloadToLambda"
 
 
 type PDFDisplayerProps = {
-  file: File | null;
-}; 
+  file: File | null,
+  openDrawer: (markdown: string) => void;
+};
 
 export function SearchButton({
   file,
+  openDrawer
 }: PDFDisplayerProps) {
   const [text, setText] = useState("")
   const handleSubmit = async () => {
@@ -28,6 +30,8 @@ export function SearchButton({
       );
 
       console.log(response);
+      openDrawer(response.response);
+
     } catch (error) {
       console.error(error);
     }
