@@ -74,7 +74,7 @@ function App() {
             />
           )}
 
-          {mode.includes("recommendations") && (<AIRecommendations file={pdfFile} />)}
+          {mode.includes("recommendations") && (<AIRecommendations file={pdfFile} openDrawer={openDrawer}/>)}
           </div>
         </div>
       

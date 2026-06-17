@@ -11,11 +11,13 @@ import JobsAccordion from "../Buttons/accordionButton"
 import type { Job } from "../../types/Job"
 
 type PDFDisplayerProps = {
-  file: File | null
+  file: File | null,
+  openDrawer: (markdown: string) => void;
 }
 
 export function AIRecommendations({
   file,
+  openDrawer
 }: PDFDisplayerProps) {
   const [keywords, setKeywords] = useState("")
   const [jobs, setJobs] = useState<Job[]>([])
@@ -60,7 +62,7 @@ export function AIRecommendations({
 
       {/* Resultados con scroll */}
       <div className="flex-1 overflow-y-auto border rounded-md p-2">
-        <JobsAccordion jobs={jobs} file={file}/>
+        <JobsAccordion jobs={jobs} file={file} openDrawer={openDrawer}/>
       </div>
 
     </div>
