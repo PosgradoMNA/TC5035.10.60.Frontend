@@ -44,7 +44,7 @@ export function SearchButton({
           <SearchIcon />
         </InputGroupAddon>
         <InputGroupInput
-          placeholder="Enter job link..."
+          placeholder="Enter job link and press Enter..."
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {

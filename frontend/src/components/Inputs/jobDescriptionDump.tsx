@@ -48,7 +48,7 @@ export function JobDescriptionDump({
       <InputGroup>
 
         <InputGroupTextarea
-          placeholder="Share the job description..."
+          placeholder="Share the job description and click the button..."
           className="min-h-24"
           value={text}
           onChange={(e) => {

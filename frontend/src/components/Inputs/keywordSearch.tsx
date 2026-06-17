@@ -48,7 +48,7 @@ export function AIRecommendations({
             </InputGroupAddon>
 
             <InputGroupInput
-              placeholder="Search the job you want..."
+              placeholder="Search the job you want and press Enter..."
               onChange={(e) => setKeywords(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
