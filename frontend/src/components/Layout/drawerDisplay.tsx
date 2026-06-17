@@ -42,11 +42,11 @@ export function MarkdownDrawer({
         </div>
 
         <DrawerFooter>
-          <Button>Submit</Button>
+          <Button>Download</Button>
 
           <DrawerClose asChild>
             <Button variant="outline">
-              Cancel
+              Close
             </Button>
           </DrawerClose>
         </DrawerFooter>
