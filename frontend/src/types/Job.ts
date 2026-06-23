@@ -6,4 +6,5 @@ export type Job = {
   minimumSalary?: number;
   maximumSalary?: number;
   jobDescription: string;
+  ranking_score : number;
 };

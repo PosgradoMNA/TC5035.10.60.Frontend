@@ -3,22 +3,24 @@ import { Accordion } from "@base-ui/react/accordion";
 import type { Job } from "../../types/Job";
 import { DynamicRecommendationButton } from "./dynamicRecommendationButton";
 
-
 type Props = {
-  jobs: Job[],
-  file: File | null,
+  jobs: Job[];
+  file: File | null;
   openDrawer: (markdown: string) => void;
 };
 
-export default function JobsAccordion({ jobs, file, openDrawer}: Props) {
+export default function JobsAccordion({ jobs, file, openDrawer }: Props) {
+  const sortedJobs = [...jobs].sort(
+    (a, b) => b.ranking_score - a.ranking_score
+  );
 
   return (
     <Accordion.Root>
-      {jobs.map((job) => (
+      {sortedJobs.map((job) => (
         <Accordion.Item key={job.jobId}>
           <Accordion.Header>
             <Accordion.Trigger>
-              {job.jobTitle}
+              {job.jobTitle} {job.ranking_score}
               <PlusIcon />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -49,14 +51,13 @@ export default function JobsAccordion({ jobs, file, openDrawer}: Props) {
                   __html: job.jobDescription,
                 }}
               />
-              {/* automatically generated button*/}
-              <DynamicRecommendationButton 
+
+              <DynamicRecommendationButton
                 file={file}
                 jobDescription={job.jobDescription}
                 openDrawer={openDrawer}
               />
             </div>
-
           </Accordion.Panel>
         </Accordion.Item>
       ))}

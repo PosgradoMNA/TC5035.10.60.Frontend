@@ -13,6 +13,8 @@ export async function keywordsToLambda(file: File, keywords: string) {
         keywords: keywords
     }; 
 
+    console.log(payload)
+
   const response = await fetch(
     API_URL,
     {
