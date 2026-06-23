@@ -2,6 +2,7 @@ import * as React from "react";
 import { Accordion } from "@base-ui/react/accordion";
 import type { Job } from "../../types/Job";
 import { DynamicRecommendationButton } from "./dynamicRecommendationButton";
+import { RatingStars } from "../Rating/ratingStars"
 
 type Props = {
   jobs: Job[];
@@ -20,7 +21,7 @@ export default function JobsAccordion({ jobs, file, openDrawer }: Props) {
         <Accordion.Item key={job.jobId}>
           <Accordion.Header>
             <Accordion.Trigger>
-              {job.jobTitle} {job.ranking_score}
+              {job.jobTitle} <RatingStars rating_number = {job.ranking_score}/>
               <PlusIcon />
             </Accordion.Trigger>
           </Accordion.Header>
