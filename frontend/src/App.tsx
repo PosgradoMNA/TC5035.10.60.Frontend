@@ -9,6 +9,7 @@ import { JobDescriptionDump } from './components/Inputs/jobDescriptionDump'
 import { AIRecommendations } from './components/Inputs/keywordSearch';
 import CircularText from '../src/reactbits/components/CircularText';
 import { MarkdownDrawer } from './components/Layout/drawerDisplay';
+import { DynamicText } from './components/Text/dinamicText';
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="title">CVSync</h1>
+      <DynamicText text="CVSync" />
       <hr className="divider" />
 
       {/*Content container */}
